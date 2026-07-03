@@ -14,14 +14,81 @@ body, html {height: 100%}
   background-position: center;
   background-size: cover;
 }
+
+/* Bubble portrait effect (inspired by organic blob shapes) */
+.portrait-card {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portrait-glow {
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(200, 200, 220, 0.15) 50%, transparent 70%);
+  filter: blur(20px);
+  z-index: 1;
+  animation: pulseGlow 4s ease-in-out infinite alternate;
+}
+
+.portrait-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  z-index: 2;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  animation: morphShape 12s ease-in-out infinite alternate;
+  transition: border-color 0.3s ease;
+}
+
+.portrait-card:hover .portrait-frame {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.portrait-card:hover .portrait-img {
+  transform: scale(1.05);
+}
+
+@keyframes morphShape {
+  0%   { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50%  { border-radius: 50% 60% 40% 50% / 40% 60% 50% 60%; }
+  100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+}
+
+@keyframes pulseGlow {
+  0%   { transform: scale(0.95); opacity: 0.8; }
+  100% { transform: scale(1.05); opacity: 1; }
+}
 </style>
 <body>
 
 <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
-    <div class="w3-display-topleft w3-padding-large w3-xlarge">
-    Contact : Marina.Canizo@ulb.be 
+  <div class="w3-display-topleft w3-padding-large w3-xlarge">
+    Contact : marinacanizo@gmail.com
   </div>
   <div class="w3-display-middle">
+    <div class="portrait-card">
+      <div class="portrait-glow"></div>
+      <div class="portrait-frame">
+        <img src="profile.png" alt="Cañizo Marina" class="portrait-img">
+      </div>
+    </div>
     <h1 class="w3-jumbo w3-animate-top">Cañizo Marina</h1>
     <hr class="w3-border-grey" style="margin:auto;width:40%">
     <p class="w3-large w3-center">Landing page coming soon</p>
