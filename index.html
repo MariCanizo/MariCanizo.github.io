@@ -1,98 +1,240 @@
 <!DOCTYPE html>
-<html>
-<title>Cañizo Marina</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<style>
-body,h1 {font-family: "Raleway", sans-serif}
-body, html {height: 100%}
-.bgimg {
-  background-image: url('https://images.unsplash.com/photo-1616917211597-23f3578b6aa5?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQ0fHxjb21pbmclMjBzb29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
-  min-height: 100%;
-  background-position: center;
-  background-size: cover;
-}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marina Cañizo | Data Analyst & Storyteller</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Bubble portrait effect (inspired by organic blob shapes) */
-.portrait-card {
-  position: relative;
-  width: 220px;
-  height: 220px;
-  margin: 0 auto 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    html, body {
+      height: 100%;
+    }
 
-.portrait-glow {
-  position: absolute;
-  inset: -5%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(200, 200, 220, 0.15) 50%, transparent 70%);
-  filter: blur(20px);
-  z-index: 1;
-  animation: pulseGlow 4s ease-in-out infinite alternate;
-}
+    body {
+      font-family: "Montserrat", sans-serif;
+      color: #fff;
+      background: #0a3d4a;
+    }
 
-.portrait-frame {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  border: 3px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.08);
-  overflow: hidden;
-  z-index: 2;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-  animation: morphShape 12s ease-in-out infinite alternate;
-  transition: border-color 0.3s ease;
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: opacity 0.25s ease;
+    }
 
-.portrait-card:hover .portrait-frame {
-  border-color: rgba(255, 255, 255, 0.7);
-}
+    a:hover {
+      opacity: 0.75;
+    }
 
-.portrait-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
+    .page {
+      min-height: 100vh;
+      background: url("hero-bg.png") center / cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
 
-.portrait-card:hover .portrait-img {
-  transform: scale(1.05);
-}
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2.5rem 4rem;
+      position: relative;
+      z-index: 2;
+    }
 
-@keyframes morphShape {
-  0%   { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-  50%  { border-radius: 50% 60% 40% 50% / 40% 60% 50% 60%; }
-  100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-}
+    .logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.35rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
 
-@keyframes pulseGlow {
-  0%   { transform: scale(0.95); opacity: 0.8; }
-  100% { transform: scale(1.05); opacity: 1; }
-}
-</style>
+    .nav {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav a {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 0.35rem;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #fff;
+      transform: translateX(-50%) scale(0);
+      transition: transform 0.25s ease;
+    }
+
+    .nav a:hover::after,
+    .nav a:focus-visible::after {
+      transform: translateX(-50%) scale(1);
+    }
+
+    /* Hero */
+    .hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 0 4rem 6rem;
+      max-width: 52rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .hero-name {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-role {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+
+    .hero-role a:hover {
+      opacity: 1;
+      text-decoration: underline;
+      text-underline-offset: 0.35em;
+    }
+
+    .hero-taglines {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+      font-weight: 400;
+      line-height: 1.65;
+      margin-top: 0.75rem;
+      max-width: 28rem;
+    }
+
+    .hero-taglines a {
+      display: inline;
+    }
+
+    .hero-taglines a:hover {
+      opacity: 1;
+      font-style: italic;
+    }
+
+    .hero-taglines em {
+      font-style: italic;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      padding: 0.85rem 1.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      width: fit-content;
+      transition: background 0.3s ease, opacity 0.25s ease;
+    }
+
+    .cta-btn:hover {
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .cta-btn .arrow {
+      font-size: 0.9rem;
+      transition: transform 0.25s ease;
+    }
+
+    .cta-btn:hover .arrow {
+      transform: translateX(4px);
+    }
+
+    /* Placeholder sections for nav targets */
+    .section-placeholder {
+      scroll-margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 2rem 1.5rem;
+      }
+
+      .nav {
+        gap: 1.25rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 2rem 1.5rem 4rem;
+      }
+    }
+  </style>
+</head>
 <body>
 
-<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
-  <div class="w3-display-topleft w3-padding-large w3-xlarge">
-    Contact : marinacanizo@gmail.com
-  </div>
-  <div class="w3-display-middle">
-    <div class="portrait-card">
-      <div class="portrait-glow"></div>
-      <div class="portrait-frame">
-        <img src="profile.png" alt="Cañizo Marina" class="portrait-img">
+  <div class="page">
+    <header class="header">
+      <a href="#home" class="logo" aria-label="Marina Cañizo — Home">MC</a>
+      <nav aria-label="Main navigation">
+        <ul class="nav">
+          <li><a href="#about">About</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="mailto:marinacanizo@gmail.com">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="home" class="hero section-placeholder">
+      <div class="hero-inner">
+        <h1 class="hero-name">
+          <a href="#about">Marina Cañizo</a>
+        </h1>
+        <p class="hero-role">
+          <a href="#about">Data Analyst &amp; Storyteller</a>
+        </p>
+        <p class="hero-taglines">
+          <a href="#services">Turning data into clarity.</a><br>
+          <a href="#services">Insights that <em>inspire</em> confident decisions.</a>
+        </p>
+        <a href="#work" class="cta-btn">
+          View My Work <span class="arrow" aria-hidden="true">→</span>
+        </a>
       </div>
-    </div>
-    <h1 class="w3-jumbo w3-animate-top">Cañizo Marina</h1>
-    <hr class="w3-border-grey" style="margin:auto;width:40%">
-    <p class="w3-large w3-center">Landing page coming soon</p>
+    </main>
   </div>
-</div>
 
 </body>
 </html>
