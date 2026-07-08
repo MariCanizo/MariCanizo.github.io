@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marina Cañizo | Data Analyst & Storyteller</title>
+  <title>Marina Cañizo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -15,27 +15,21 @@
     }
 
     body {
-      font-family: "Montserrat", sans-serif;
+      background: url("hero-bg.png") center / cover no-repeat;
       color: #fff;
-      background: #0a3d4a;
+      font-family: "Montserrat", sans-serif;
     }
 
     a {
       color: inherit;
       text-decoration: none;
-      transition: opacity 0.25s ease;
-    }
-
-    a:hover {
-      opacity: 0.75;
     }
 
     .page {
       min-height: 100vh;
-      background: url("hero-bg.png") center / cover no-repeat;
       display: flex;
       flex-direction: column;
-      position: relative;
+      padding: 2.5rem 4rem 4rem;
     }
 
     /* Header */
@@ -43,9 +37,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 2.5rem 4rem;
-      position: relative;
-      z-index: 2;
     }
 
     .logo {
@@ -66,26 +57,11 @@
       font-weight: 400;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      position: relative;
-      padding-bottom: 0.35rem;
+      transition: opacity 0.25s ease;
     }
 
-    .nav a::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: #fff;
-      transform: translateX(-50%) scale(0);
-      transition: transform 0.25s ease;
-    }
-
-    .nav a:hover::after,
-    .nav a:focus-visible::after {
-      transform: translateX(-50%) scale(1);
+    .nav a:hover {
+      opacity: 0.7;
     }
 
     /* Hero */
@@ -93,10 +69,8 @@
       flex: 1;
       display: flex;
       align-items: center;
-      padding: 0 4rem 6rem;
-      max-width: 52rem;
-      position: relative;
-      z-index: 2;
+      padding-top: 2rem;
+      padding-left: clamp(2rem, 10vw, 8rem);
     }
 
     .hero-inner {
@@ -105,12 +79,82 @@
       gap: 1.25rem;
     }
 
+    .hero-intro {
+      display: flex;
+      align-items: center;
+      gap: clamp(1.5rem, 4vw, 3rem);
+    }
+
     .hero-name {
       font-family: "Cormorant Garamond", serif;
-      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-size: clamp(3.5rem, 8.5vw, 6.75rem);
       font-weight: 400;
       line-height: 1.05;
       letter-spacing: 0.01em;
+    }
+
+    .hero-name a {
+      display: block;
+    }
+
+    /* Bubble portrait effect */
+    .portrait-card {
+      position: relative;
+      width: clamp(140px, 18vw, 200px);
+      height: clamp(140px, 18vw, 200px);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .portrait-glow {
+      position: absolute;
+      inset: -5%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(200, 220, 230, 0.15) 50%, transparent 70%);
+      filter: blur(20px);
+      z-index: 1;
+      animation: pulseGlow 4s ease-in-out infinite alternate;
+    }
+
+    .portrait-frame {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      border: 3px solid rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      z-index: 2;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+      animation: morphShape 12s ease-in-out infinite alternate;
+      transition: border-color 0.3s ease;
+    }
+
+    .portrait-card:hover .portrait-frame {
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .portrait-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .portrait-card:hover .portrait-img {
+      transform: scale(1.05);
+    }
+
+    @keyframes morphShape {
+      0%   { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+      50%  { border-radius: 50% 60% 40% 50% / 40% 60% 50% 60%; }
+      100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    }
+
+    @keyframes pulseGlow {
+      0%   { transform: scale(0.95); opacity: 0.8; }
+      100% { transform: scale(1.05); opacity: 1; }
     }
 
     .hero-role {
@@ -121,32 +165,13 @@
       margin-top: 0.25rem;
     }
 
-    .hero-role a:hover {
-      opacity: 1;
-      text-decoration: underline;
-      text-underline-offset: 0.35em;
-    }
-
-    .hero-taglines {
+    .hero-tagline {
       font-family: "Cormorant Garamond", serif;
       font-size: clamp(1.15rem, 2.2vw, 1.45rem);
       font-weight: 400;
       line-height: 1.65;
       margin-top: 0.75rem;
       max-width: 28rem;
-    }
-
-    .hero-taglines a {
-      display: inline;
-    }
-
-    .hero-taglines a:hover {
-      opacity: 1;
-      font-style: italic;
-    }
-
-    .hero-taglines em {
-      font-style: italic;
     }
 
     .cta-btn {
@@ -165,7 +190,6 @@
     }
 
     .cta-btn:hover {
-      opacity: 1;
       background: rgba(255, 255, 255, 0.12);
     }
 
@@ -178,16 +202,14 @@
       transform: translateX(4px);
     }
 
-    /* Placeholder sections for nav targets */
-    .section-placeholder {
-      scroll-margin-top: 2rem;
-    }
-
     @media (max-width: 768px) {
+      .page {
+        padding: 2rem 1.5rem 3rem;
+      }
+
       .header {
         flex-direction: column;
         gap: 1.5rem;
-        padding: 2rem 1.5rem;
       }
 
       .nav {
@@ -197,7 +219,12 @@
       }
 
       .hero {
-        padding: 2rem 1.5rem 4rem;
+        padding-left: 0;
+      }
+
+      .hero-intro {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
@@ -206,28 +233,35 @@
 
   <div class="page">
     <header class="header">
-      <a href="#home" class="logo" aria-label="Marina Cañizo — Home">MC</a>
+      <a href="#home" class="logo">MC</a>
       <nav aria-label="Main navigation">
         <ul class="nav">
           <li><a href="#about">About</a></li>
           <li><a href="#work">Work</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="mailto:marinacanizo@gmail.com">Contact</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </header>
 
-    <main id="home" class="hero section-placeholder">
+    <main id="home" class="hero">
       <div class="hero-inner">
-        <h1 class="hero-name">
-          <a href="#about">Marina Cañizo</a>
-        </h1>
+        <div class="hero-intro">
+          <h1 class="hero-name">
+            <a href="#about">Marina</a>
+            <a href="#about">Cañizo</a>
+          </h1>
+          <div class="portrait-card">
+            <div class="portrait-glow"></div>
+            <div class="portrait-frame">
+              <img src="profile.png" alt="Marina Cañizo" class="portrait-img">
+            </div>
+          </div>
+        </div>
         <p class="hero-role">
-          <a href="#about">Data Analyst &amp; Storyteller</a>
+          <a href="#about">Data Analyst</a>
         </p>
-        <p class="hero-taglines">
-          <a href="#services">Turning data into clarity.</a><br>
-          <a href="#services">Insights that <em>inspire</em> confident decisions.</a>
+        <p class="hero-tagline">
+          <a href="#services">Turning data I LIKE into clarity.</a>
         </p>
         <a href="#work" class="cta-btn">
           View My Work <span class="arrow" aria-hidden="true">→</span>
